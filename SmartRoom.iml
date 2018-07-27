@@ -18,6 +18,15 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="library" exported="" name="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER" level="application" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../json-simple-1.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Maven: com.ibm.watson.developer_cloud:java-sdk:6.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.ibm.watson.developer_cloud:assistant:6.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.ibm.watson.developer_cloud:conversation:6.2.0" level="project" />
@@ -38,14 +47,5 @@
     <orderEntry type="library" name="Maven: com.ibm.watson.developer_cloud:text-to-speech:6.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.ibm.watson.developer_cloud:tone-analyzer:6.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.ibm.watson.developer_cloud:visual-recognition:6.2.0" level="project" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../json-simple-1.1.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
   </component>
 </module>

@@ -5,6 +5,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.HashMap;
+import java.util.Map;
 
 //import javax.sound.*;
 import javax.sound.sampled.AudioFileFormat;
@@ -17,11 +22,20 @@ import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.TargetDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import com.ibm.watson.developer_cloud.http.HttpMediaType;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.RecognizeOptions;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechRecognitionResults;
+import org.json.simple.JSONObject;
 import org.omg.CORBA.portable.OutputStream;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+
+import java.net.URI;
+import java.util.Scanner;
+
 
 public class SampleController {
 
@@ -137,6 +151,96 @@ public class SampleController {
 					musicplayer.seek(Duration.ZERO);
 				}
 			});
+		}
+	}
+
+	public void sendCommand(){
+		try {
+			SpeechToText service = new SpeechToText();
+			service.setUsernameAndPassword("c26521b4-64ef-4a9a-b632-26c0de1105bf", "EWgpz7Kkkpoz");
+			String filePath = new java.io.File("").getAbsolutePath() + "/data/RecordAudio.wav";
+			filePath = filePath.replace("\\", "/");
+			File audio = new File(filePath);
+
+			//see http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/#!/speech-to-text/recognizeSession
+			//for parameter explanation
+
+			Map<String, Object> params = new HashMap<String, Object>();
+
+			RecognizeOptions options = new RecognizeOptions.Builder()
+					.audio(audio)
+					.contentType(HttpMediaType.AUDIO_WAV)
+					.build();
+
+			SpeechRecognitionResults transcript = service.recognize(options).execute();
+			System.out.println(transcript.getResults());
+			String trs = transcript.toString();
+			if(trs.length() == 0){
+			    System.out.println("Cannot receive command");
+			    return;
+            }
+			trs = trs.substring((trs.indexOf("transcript") + 12));
+			trs = trs.substring(0, trs.indexOf(","));
+			trs= trs.substring(trs.indexOf("\"") + 1, trs.lastIndexOf("\""));
+
+			try {
+				String urlParameters = "message=" + trs;
+				String request = "https://smartroomx.eu-gb.mybluemix.net/sound";
+				URL url = new URL(request);
+
+				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+				connection.setDoOutput(true);
+				connection.setDoInput(true);
+				connection.setInstanceFollowRedirects(false);
+				connection.setRequestMethod("POST");
+				connection.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+				connection.setRequestProperty("charset", "utf-8");
+				connection.setRequestProperty("Content-Length","" + Integer.toString(urlParameters.getBytes().length));
+				connection.setUseCaches(false);
+				System.out.println("Connected to the url");
+				DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
+				System.out.println("Sending message");
+				wr.writeBytes(urlParameters);
+				System.out.println("Sent");
+				int code = connection.getResponseCode();
+				if(code == 200)
+					System.out.println("Success with the response code : " + code);
+				else
+					System.out.println("Response code : " + code);
+				wr.flush();
+				wr.close();
+				connection.disconnect();
+
+                String content = null;
+                URLConnection connection2 = null;
+                try {
+                    // Make a URL to the web page
+                    URL url2 = new URL("http://smartroomx.eu-gb.mybluemix.net/ugur");
+
+                    // Get the input stream through URL Connection
+                    URLConnection con = url2.openConnection();
+                    InputStream is =con.getInputStream();
+
+                    BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+                    String line = null;
+
+                    // read each line and write to System.out
+                    while ((line = br.readLine()) != null) {
+                        System.out.println(line.substring(line.indexOf(":") + 1, line.indexOf("}")));
+                    }
+                }catch ( Exception ex ) {
+                    ex.printStackTrace();
+                }
+            }
+			catch(Exception e){
+				System.out.println(e);
+				System.out.println("Post exception");
+			}
+		}
+		catch(Exception e){
+			System.out.println(e);
+			System.out.println("Speech to text exception");
 		}
 	}
 
