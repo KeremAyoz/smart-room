@@ -15,12 +15,7 @@ public class SoundRecorder {
 
 	// the line from which audio data is captured
 	TargetDataLine line;
-	/*
-	/Users/kerem/Desktop/OneDrive/Workspace/Java/SmartRoom
-	/Users/kerem/Desktop/OneDrive/Workspace/Java/SmartRoom/data/R
-	 * 
-	 * */
-	 
+	
 	/**
 	 * Defines an audio format
 	 */

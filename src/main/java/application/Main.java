@@ -14,7 +14,7 @@ public class Main extends Application {
 			BorderPane root = FXMLLoader.load(getClass().getClassLoader().getResource("main/resources/Sample.fxml"));
 			Scene scene = new Scene(root, 1005, 705);
 			primaryStage.setScene(scene);
-			primaryStage.setFullScreen(true);
+			//primaryStage.setFullScreen(true);
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

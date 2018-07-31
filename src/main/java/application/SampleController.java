@@ -5,30 +5,19 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
-
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-
 import com.ibm.watson.developer_cloud.http.HttpMediaType;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.RecognizeOptions;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechRecognitionResults;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.TextToSpeech;
-import com.ibm.watson.developer_cloud.text_to_speech.v1.model.GetPronunciationOptions.Voice;
-import com.ibm.watson.developer_cloud.text_to_speech.v1.model.GetVoiceOptions;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.model.SynthesizeOptions;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.util.WaveUtils;
-
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 
 public class SampleController implements Initializable {
 	
@@ -38,7 +27,6 @@ public class SampleController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
-	
 	public void recordVoice() throws InterruptedException {
 		final SoundRecorder recorder = new SoundRecorder();
 		Thread stopper = new Thread(new Runnable() {
@@ -55,7 +43,6 @@ public class SampleController implements Initializable {
 		recorder.start();
 		processSpeech();
 	}
-	
 	public void listenMessage() {
 		try
 	    {
@@ -68,7 +55,6 @@ public class SampleController implements Initializable {
 	        exc.printStackTrace(System.out);
 	    }
 	}
-	
 	public void listenResponse() {
 		try
 	    {
@@ -81,8 +67,6 @@ public class SampleController implements Initializable {
 	        exc.printStackTrace(System.out);
 	    }
 	}
-	
-	
 	public void lightsOn() {
 		sendCommand("turn the lights on");
 	}
@@ -101,7 +85,6 @@ public class SampleController implements Initializable {
 	public void curtainDown() {
 		sendCommand("curtains off");
 	}
-	
 	public void sendCommand(String trs) {
 		try {	
 			try {
@@ -166,7 +149,6 @@ public class SampleController implements Initializable {
 			System.out.println("Speech to text exception");
 		}
 	}	
-	
 	public void processSpeech(){
 		try {
 			SpeechToText service = new SpeechToText();
@@ -198,7 +180,6 @@ public class SampleController implements Initializable {
 			}
 		
 	}
-	
 	public void processResponse(String message) {
 		TextToSpeech textToSpeech = new TextToSpeech();
 		textToSpeech.setUsernameAndPassword("897a5521-a801-482b-8f03-2e69f52dfc32", "AknvSHVzwo1B");
@@ -229,6 +210,4 @@ public class SampleController implements Initializable {
 		  e.printStackTrace();
 		}
 	}
-
-	
 }
