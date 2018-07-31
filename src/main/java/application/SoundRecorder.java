@@ -1,4 +1,4 @@
-package application;
+package main.java.application;
 import javax.sound.sampled.*;
 import java.io.*;
 
@@ -8,8 +8,8 @@ import java.io.*;
  */
 public class SoundRecorder {
 	// path of the wav file
-	File wavFile = new File("//" + new java.io.File("").getAbsolutePath() + "/data/RecordAudio.wav");
-
+	File wavFile = new File("//" + new java.io.File("").getAbsolutePath() + "/data/message.wav");
+	
 	// format of audio file
 	AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
 
@@ -57,7 +57,6 @@ public class SoundRecorder {
 			AudioInputStream ais = new AudioInputStream(line);
 
 			System.out.println("Start recording...");
-
 			// start recording
 			AudioSystem.write(ais, fileType, wavFile);
 
