@@ -7,11 +7,11 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
-	<classpathentry kind="lib" path="/Users/kerem/Desktop/jars/java-json.jar"/>
-	<classpathentry kind="lib" path="/Users/kerem/Desktop/jars/java-sdk-6.2.0-jar-with-dependencies.jar"/>
-	<classpathentry kind="lib" path="/Users/kerem/Desktop/jars/json-simple-1.1.jar"/>
-	<classpathentry kind="lib" path="/Users/kerem/Desktop/jars/org.json.jar"/>
-	<classpathentry kind="lib" path="/Users/kerem/Desktop/jars/http-20070405.jar"/>
-	<classpathentry kind="lib" path="/Users/kerem/Desktop/jars/deploy.jar"/>
+	<classpathentry kind="lib" path="/Users/kerem/Desktop/GitHub/smart-room/lib/deploy.jar"/>
+	<classpathentry kind="lib" path="/Users/kerem/Desktop/GitHub/smart-room/lib/http-20070405.jar"/>
+	<classpathentry kind="lib" path="/Users/kerem/Desktop/GitHub/smart-room/lib/java-json.jar"/>
+	<classpathentry kind="lib" path="/Users/kerem/Desktop/GitHub/smart-room/lib/java-sdk-6.2.0-jar-with-dependencies.jar"/>
+	<classpathentry kind="lib" path="/Users/kerem/Desktop/GitHub/smart-room/lib/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/kerem/Desktop/GitHub/smart-room/lib/org.json.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
