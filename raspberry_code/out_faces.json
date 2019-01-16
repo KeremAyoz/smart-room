@@ -1,0 +1,27 @@
+{
+    "images": [
+        {
+            "faces": [
+                {
+                    "age": {
+                        "min": 18,
+                        "max": 21,
+                        "score": 0.9997416
+                    },
+                    "face_location": {
+                        "height": 345,
+                        "width": 370,
+                        "left": 790,
+                        "top": 0
+                    },
+                    "gender": {
+                        "gender": "MALE",
+                        "score": 0.9912328
+                    }
+                }
+            ],
+            "image": "image.jpg"
+        }
+    ],
+    "images_processed": 1
+}
