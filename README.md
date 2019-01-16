@@ -1,8 +1,8 @@
 # SmartRoom
 
-Multi-platform IoT Application that controls various devices in a room. It uses Arduino Yun and Raspberry Pi to control devices locally. Desktop app can be used to control the room remotely.
+Multi-platform IoT Application that controls various devices in a room. It uses Arduino Yun and Raspberry Pi to control room locally. Desktop app can be used to control the room remotely.
 
-Desktop app can receive voice commands to control devices in the room. IBM Watson Servives are used in that project.
+Desktop app can receive voice commands to control devices in the room. IBM Watson Services are used in that project.
 
 ## Demo
 
